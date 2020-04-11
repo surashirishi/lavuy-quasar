@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-red-3">
         <q-btn
           flat
           dense
@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Lavuy 犬の散歩代行サービス
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -43,6 +43,11 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer elevated class="bg-red-3">
+      <q-toolbar>
+        <q-toolbar-title>Footer</q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -61,25 +66,25 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: [
         {
-          title: 'Docs',
+          title: 'Mans',
           caption: 'quasar.dev',
-          icon: 'school',
+          icon: 'face',
           link: 'https://quasar.dev'
         },
         {
-          title: 'Github',
+          title: 'Womens',
           caption: 'github.com/quasarframework',
-          icon: 'code',
+          icon: 'alarm',
           link: 'https://github.com/quasarframework'
         },
         {
-          title: 'Discord Chat Channel',
+          title: 'Daddy',
           caption: 'chat.quasar.dev',
           icon: 'chat',
           link: 'https://chat.quasar.dev'
         },
         {
-          title: 'Forum',
+          title: 'Mommy',
           caption: 'forum.quasar.dev',
           icon: 'record_voice_over',
           link: 'https://forum.quasar.dev'
