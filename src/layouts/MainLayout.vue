@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Lavuy 犬の散歩代行サービス
+          WanWalk 犬の散歩代行サービス
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>

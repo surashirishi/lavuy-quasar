@@ -5,11 +5,17 @@
         <q-page class="q-pa-md row items-start q-gutter-md">
           <p v-for="(dog, index) in dogs" :key="index">
             <RateCard
-              :dogImage="dog.image"
-              :dogName="dog.name"
-              :reward="dog.reward"
+              :dogData="dog"
+              @open="showDogDetail"
             />
           </p>
+          <q-dialog v-model="open" full-height full-width>
+            <DogDetailDialog
+              :dogDetailData="selectedDogDetail"
+              @close="open=false"
+            />
+          </q-dialog>
+
         </q-page>
       </q-page-container>
     </q-layout>
@@ -18,17 +24,29 @@
 
 <script>
 import RateCard from 'components/Cards/RateCard'
+import DogDetailDialog from 'components/Dialogs/DogDetailDialog'
 
 export default {
   name: 'Home',
   data () {
     return {
-      dogs: []
+      dogs: [],
+      selectedDogDetail: [],
+      selectedDogId: 0,
+      open: false
     }
   },
-
   components: {
-    RateCard
+    RateCard,
+    DogDetailDialog
+  },
+  methods: {
+    showDogDetail (dogId) {
+      this.open = true
+      this.$store.dispatch('getDogDetail', dogId).then((dogDetailData) => {
+        this.selectedDogDetail = dogDetailData
+      })
+    }
   },
   created () {
     this.$store.dispatch('getAllDogs').then((dogsData) => {
@@ -37,3 +55,6 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+</style>

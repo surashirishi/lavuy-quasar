@@ -1,7 +1,7 @@
 <template>
-  <q-card class="my-card">
+  <q-card class="card" @click="openDialog">
 
-      <q-img :src="dogImage" class="dog-image" />
+      <q-img :src="dogData.image" class="dog-image" />
 
       <q-card-section>
         <q-btn
@@ -14,7 +14,8 @@
 
         <div class="row no-wrap items-center">
           <div class="col text-h6 ellipsis">
-            {{ dogName }}
+            <q-icon name="fas fa-paw" :class="dogSex" />
+            {{ dogData.name }}
           </div>
           <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
             <q-icon name="place" />
@@ -22,15 +23,18 @@
           </div>
         </div>
 
-        <q-rating v-model="stars" :max="5" size="32px" />
+        <!-- <q-rating v-model="stars" :max="5" size="32px" /> -->
       </q-card-section>
 
       <q-card-section class="q-pt-none">
         <div class="text-subtitle1">
-          1h / ¥ {{reward}}
+          1h / ¥ {{dogData.reward}}
         </div>
         <div class="text-caption text-grey">
-          大阪府茨木市穂積大701
+          住所： {{ownerData.address}}
+        </div>
+        <div class="text-caption text-red-3">
+          飼い主： {{ownerData.name}}
         </div>
       </q-card-section>
 
@@ -50,14 +54,36 @@ export default {
   name: 'RateCard',
   data () {
     return {
-      stars: 4
+      stars: 4,
+      ownerData: []
     }
   },
-  props: ['dogImage', 'dogName', 'reward']
+  created () {
+    this.$store.dispatch('getOwnerInfo', this.dogData.owner_id).then((ownerData) => {
+      this.ownerData = ownerData
+    })
+  },
+  methods: {
+    openDialog () {
+      this.$emit('open', this.dogData.id)
+    }
+  },
+  computed: {
+    dogSex () {
+      if (this.dogData.sex === 1) {
+        return 'text-primary'
+      } else {
+        return 'text-pink'
+      }
+    }
+  },
+  props: ['dogData']
 }
 </script>
 
 <style lang="sass" scoped>
-.dog-image
-  height: 150px
+.card
+  min-width: 200px
+  .dog-image
+    height: 150px
 </style>

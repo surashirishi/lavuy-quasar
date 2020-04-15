@@ -16,6 +16,7 @@ Vue.use(Vuex)
  */
 
 export default function (/* { ssrContext } */) {
+  const baseUrl = 'http://localhost:3000/'
   const Store = new Vuex.Store({
     state: {
 
@@ -24,13 +25,33 @@ export default function (/* { ssrContext } */) {
 
     },
     actions: {
+      // 犬一覧
       async getAllDogs () {
-        console.log('dos')
-        const data = await axios.get('http://localhost:3000/dogs/index').then(
-          (res) => res.data,
-          () => ''
+        const data = await axios.get(`${baseUrl}/dogs/index`).then(
+          (res) => res.data
         )
-        console.log(data)
+        return data
+      },
+      // 犬詳細
+      async getDogDetail ({ state }, dogId) {
+        const data = await axios.get(`${baseUrl}/dogs/show`, {
+          params: {
+            dog_id: dogId
+          }
+        }).then(
+          (res) => res.data
+        )
+        return data
+      },
+      // 飼い主情報
+      async getOwnerInfo ({ state }, ownerId) {
+        const data = await axios.get(`${baseUrl}/owners/show`, {
+          params: {
+            id: ownerId
+          }
+        }).then(
+          (res) => res.data
+        )
         return data
       }
     },
