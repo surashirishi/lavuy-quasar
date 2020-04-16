@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          WanWalk 犬の散歩代行サービス
+          OneWalk 犬の散歩代行サービス
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -30,7 +30,7 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          Menu
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -45,7 +45,7 @@
     </q-page-container>
     <q-footer elevated class="bg-red-3">
       <q-toolbar>
-        <q-toolbar-title>Footer</q-toolbar-title>
+        <q-toolbar-title>運営元：Urayasai</q-toolbar-title>
       </q-toolbar>
     </q-footer>
   </q-layout>
@@ -53,6 +53,8 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink'
+
+const baseUrl = 'http://localhost:8080'
 
 export default {
   name: 'MainLayout',
@@ -66,40 +68,29 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: [
         {
-          title: 'Mans',
-          caption: 'quasar.dev',
-          icon: 'face',
-          link: 'https://quasar.dev'
+          title: '散歩相手を探す',
+          icon: 'pets',
+          link: `${baseUrl}`
         },
         {
-          title: 'Womens',
-          caption: 'github.com/quasarframework',
-          icon: 'alarm',
-          link: 'https://github.com/quasarframework'
+          title: '散歩をお願いする？',
+          icon: 'touch_app',
+          link: `${baseUrl}/#/request`
         },
         {
-          title: 'Daddy',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
+          title: 'お気に入り',
+          icon: 'favorite',
+          link: `${baseUrl}/#/favorite`
         },
         {
-          title: 'Mommy',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
+          title: '予約状況',
+          icon: 'bookmarks',
+          link: `${baseUrl}/#/reservation`
         },
         {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
-        },
-        {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
+          title: 'アカウント情報',
+          icon: 'account_box',
+          link: `${baseUrl}/#/account`
         }
       ]
     }

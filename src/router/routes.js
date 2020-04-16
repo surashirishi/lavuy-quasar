@@ -13,6 +13,34 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Home.vue') }
     ]
+  },
+  {
+    path: '/request',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Request.vue') }
+    ]
+  },
+  {
+    path: '/favorite',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Favorite.vue') }
+    ]
+  },
+  {
+    path: '/reservation',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Reservation.vue') }
+    ]
+  },
+  {
+    path: '/account',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Account.vue') }
+    ]
   }
 ]
 

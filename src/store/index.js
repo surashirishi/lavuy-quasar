@@ -16,7 +16,7 @@ Vue.use(Vuex)
  */
 
 export default function (/* { ssrContext } */) {
-  const baseUrl = 'http://localhost:3000/'
+  const baseUrl = 'http://localhost:3000'
   const Store = new Vuex.Store({
     state: {
 

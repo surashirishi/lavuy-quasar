@@ -9,7 +9,7 @@
           color="primary"
           icon="place"
           class="absolute"
-          style="top: 0; right: 12px; transform: translateY(-50%);"
+          style="top: 0; right: 12px; font-size: 4px; transform: translateY(-50%);"
         />
 
         <div class="row no-wrap items-center">
@@ -83,7 +83,9 @@ export default {
 
 <style lang="sass" scoped>
 .card
-  min-width: 200px
+  min-width: 230px
   .dog-image
     height: 150px
+  .icon-small
+    font-size: 4px
 </style>
